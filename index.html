@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Thabisi Tsolo(SVG)</title>
+<style>
+  :root{
+    --skin:#FFD29B;
+    --hair:#0b0b0b;
+    --gi:#f07b18;
+    --undershirt:#0b5bb5;
+    --line:#231f20;
+  }
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    margin:0;
+    background: linear-gradient(180deg,#e8f3ff 0%, #fff 60%);
+    font-family:system-ui,Arial,Helvetica;
+  }
+  .card{
+    width:420px;
+    max-width:92vw;
+    background:linear-gradient(180deg,#ffffffcc, #ffffff);
+    border-radius:18px;
+    padding:24px;
+    box-shadow: 0 10px 30px rgba(15,30,60,0.12);
+    text-align:center;
+  }
+  h1{ font-size:18px; margin:0 0 14px; color:#123; }
+  svg{ width:100%; height:auto; display:block; }
+  /* small playful hover animation */
+  .head-group { transform-origin:50% 35%; transition: transform .25s cubic-bezier(.2,.9,.3,1); }
+  .card:hover .head-group { transform: translateY(-6px) rotate(-3deg); }
+  .hair { filter: drop-shadow(0 6px 8px rgba(11,11,11,0.12)); }
+  .shine { opacity:.12; transition:opacity .25s; }
+  .card:hover .shine { opacity:.28; }
+  /* eyes blink animation */
+  .eye-closed { transform-origin: center; animation: blink 6s infinite; }
+  @keyframes blink {
+    0%, 95%, 100% { transform: scaleY(1); opacity:1; }
+    96%, 98% { transform: scaleY(0.08); opacity: .95; }
+  }
+  /* small responsive note */
+  .note { margin-top:12px; font-size:12px; color:#456; }
+</style>
+</head>
+<body>
+  <div class="card" role="img" aria-label="Stylized anime character inspired design">
+    <h1>THABISI GUSTAVO</h1>
+
+    <!-- SVG character -->
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="false" role="img">
+      <defs>
+        <linearGradient id="giGrad" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#ff9655"/>
+          <stop offset="1" stop-color="#e05b12"/>
+        </linearGradient>
+        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#0b1630" flood-opacity="0.08"/>
+        </filter>
+      </defs>
+
+      <!-- torso -->
+      <g transform="translate(50,160)">
+        <path d="M40 220 C 40 120, 340 120, 340 220 L 340 280 C 340 300, 300 320, 210 320 C 120 320, 80 300, 80 280 Z"
+          fill="url(#giGrad)" stroke="var(--line)" stroke-width="2" filter="url(#softShadow)"/>
+        <!-- undershirt -->
+        <path d="M120 220 C 140 170, 280 170, 300 220 L 300 260 C 300 280, 260 290, 210 290 C 160 290, 120 280, 120 260 Z"
+          fill="var(--undershirt)" stroke="var(--line)" stroke-width="1.5" opacity="0.98"/>
+        <!-- sash -->
+        <rect x="180" y="245" width="60" height="18" rx="6" fill="#1f2b6d" stroke="var(--line)" stroke-width="1.5"/>
+      </g>
+
+      <!-- head + hair group -->
+      <g class="head-group" transform="translate(80,12)">
+        <!-- hair: many spikes to get that anime silhouette -->
+        <g class="hair" fill="var(--hair)">
+          <path d="M200 60 L172 28 L188 12 L160 4 L138 32 L110 18 L88 40 L70 28 L56 56 L34 60 L62 84 L48 118 L78 102 L100 124 L86 148 L130 140 L158 160 L192 140 L210 124 L238 140 L252 108 L278 104 L264 78 L232 90 L200 60 Z"/>
+          <!-- subtle front tuft -->
+          <path d="M146 54 C152 40, 170 44, 176 58 C170 52,154 56,146 54 Z" fill="var(--hair)"/>
+        </g>
+
+        <!-- head / face -->
+        <g transform="translate(36,80)">
+          <ellipse cx="144" cy="118" rx="88" ry="98" fill="var(--skin)" stroke="var(--line)" stroke-width="2.2"/>
+          <!-- hairline shadow -->
+          <path d="M58 68 C88 36,200 34,220 68 C190 52,120 56,58 68 Z" fill="rgba(0,0,0,0.06)"/>
+          <!-- eyebrows -->
+          <path d="M80 92 Q112 86 128 92" stroke="var(--line)" stroke-width="5" stroke-linecap="round" fill="none" stroke-linejoin="round"/>
+          <path d="M156 92 Q188 86 214 92" stroke="var(--line)" stroke-width="5" stroke-linecap="round" fill="none" stroke-linejoin="round"/>
+
+          <!-- eyes (open) -->
+          <g transform="translate(0,18)">
+            <ellipse cx="108" cy="126" rx="16" ry="12" fill="#fff" stroke="var(--line)" stroke-width="2"/>
+            <circle cx="106" cy="128" r="6" fill="#1a2b37"/>
+            <ellipse cx="176" cy="126" rx="16" ry="12" fill="#fff" stroke="var(--line)" stroke-width="2"/>
+            <circle cx="174" cy="128" r="6" fill="#1a2b37"/>
+            <!-- small highlights -->
+            <circle cx="100" cy="122" r="2.2" fill="#fff" opacity="0.9"/>
+            <circle cx="168" cy="122" r="2.2" fill="#fff" opacity="0.9"/>
+          </g>
+
+          <!-- blink overlay (thin line that scales) -->
+          <g class="eye-closed" transform="translate(0,18)">
+            <path d="M92 126 Q106 115 120 126" stroke="var(--line)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0"/>
+            <path d="M160 126 Q174 115 188 126" stroke="var(--line)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0"/>
+          </g>
+
+          <!-- nose & mouth -->
+          <path d="M148 160 Q148 168 142 172" stroke="var(--line)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M132 184 Q148 196 168 184" stroke="#b04a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+          <!-- ear -->
+          <path d="M48 132 C36 128,36 164,52 170 C62 169,66 140,48 132 Z" fill="var(--skin)" stroke="var(--line)" stroke-width="1.6"/>
+        </g>
+
+        <!-- little collar detail / shoulder highlights -->
+        <g transform="translate(0,200)">
+          <path d="M40 12 C120 -6,260 -6,320 12" stroke="#fef2ec" stroke-width="10" opacity="0.14" fill="none"/>
+        </g>
+
+        <!-- shine -->
+        <ellipse class="shine" cx="180" cy="46" rx="30" ry="12" fill="#fff" transform="rotate(-18 180 46)"/>
+      </g>
+
+      <!-- small ground shadow -->
+      <ellipse cx="210" cy="360" rx="110" ry="18" fill="rgba(1,10,30,0.06)"/>
+    </svg>
+
+    <p>Created By Thabisi Tsolo</p>
+</body>
+</html>
